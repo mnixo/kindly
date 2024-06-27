@@ -94,7 +94,7 @@ const ConversationCardModal = ({ conversationId, message }: ModalProps) => {
             clickHandler: toggleModalClickHandler,
           },
           {
-            buttonMessage: 'Mrak Unread',
+            buttonMessage: 'Mark Unread',
             clickHandler: markConversationUnreadHandler,
           },
         ]}
