@@ -21,7 +21,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
-    setShowPassword(showPassword);
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
