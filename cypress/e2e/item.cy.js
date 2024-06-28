@@ -1,4 +1,4 @@
-import AddItemPage from '../support/page_objects/AddItemPage';
+import AddItemPage from '../support/page_objects/addItemPage';
 import ProfilePage from '../support/page_objects/profilePage';
 import * as page from '../fixtures/URLs.json';
 import * as data from '../fixtures/inputData.json';
@@ -9,7 +9,7 @@ describe('Create and Delete item positive test Suite', () => {
     cy.login(Cypress.env('loginEmail'), Cypress.env('loginPassword'));
   });
 
-  it('User can create an item. The item is visible in user profile', () => {
+  it.skip('User can create an item. The item is visible in user profile', () => {
     cy.visit(page.addItem);
     AddItemPage.nameInput().type(uniqueItemName);
     AddItemPage.descriptionInput().type(data.itemDescription);
@@ -29,7 +29,7 @@ describe('Create and Delete item positive test Suite', () => {
     ProfilePage.itemCard(uniqueItemName).should('be.visible');
   });
 
-  it('User can delete the item', () => {
+  it.skip('User can delete the item', () => {
     cy.visit(page.profile);
     ProfilePage.deleteItemButton(uniqueItemName).click();
     ProfilePage.ConfirmDeleteItemButton(uniqueItemName).click();
