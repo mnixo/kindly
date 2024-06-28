@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
@@ -37,3 +39,5 @@ jobs:
         run: npx http-server ./storybook-static -p 6006 &
       - name: Run interaction tests
         run: npx test-storybook
+      - name: Run visual tests
+        run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
