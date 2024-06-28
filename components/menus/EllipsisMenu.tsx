@@ -23,7 +23,7 @@ const EllipsisMenu: React.FC<EllipsisMenuType> = ({ menuOptions }) => {
     <>
       <button
         onClick={toggleMenuClickHandler}
-        className='rounded-sm p-[.05rem] hover:bg-gray-200 hover:bg-opacity-50'
+        className='rounded-md p-[.05rem] hover:bg-gray-200 hover:bg-opacity-50'
       >
         <EllipsisIcon width={25} height={25} />
       </button>
