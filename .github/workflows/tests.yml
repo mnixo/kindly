@@ -39,5 +39,7 @@ jobs:
         run: npx http-server ./storybook-static -p 6006 &
       - name: Run interaction tests
         run: npx test-storybook
+      - name: Run integration tests
+        run: npx cypress run --config-file cypress.storybook.config.js --spec cypress/e2e/integration/*.cy.js
       - name: Run visual tests
         run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
