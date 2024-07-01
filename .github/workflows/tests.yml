@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - dev
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   ftests:
     name: Functional Tests
@@ -70,3 +74,10 @@ jobs:
         run: npx cypress run --config-file cypress.storybook.config.js --spec cypress/e2e/integration/*.cy.js
       - name: Run visual tests
         run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+  storybook2pages:
+    name: Storybook to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          path: storybook-static
