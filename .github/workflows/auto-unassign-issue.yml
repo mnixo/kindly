@@ -3,6 +3,7 @@ name: Auto Unassign Inactive Issues
 on:
   schedule:
     - cron: '00 17 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,7 +17,7 @@ jobs:
     steps:
       - uses: boundfoxstudios/action-unassign-contributor-after-days-of-inactivity@v1.0.2
         with:
-          last-activity: 7
+          last-activity: 0.0001
           labels: 'Stale'
           labels-to-remove: 'Stale'
           message: |
