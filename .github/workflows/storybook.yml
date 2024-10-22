@@ -5,6 +5,10 @@ on:
     branches:
       - dev
       - main
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   tests-interaction:
     name: Interaction tests
@@ -24,3 +28,11 @@ jobs:
         run: npx http-server ./storybook-static -p 6006 &
       - name: Run interaction tests
         run: npx test-storybook
+  publish:
+    name: Publish to GitHub Pages
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/main')
+    steps:
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          path: storybook-static
